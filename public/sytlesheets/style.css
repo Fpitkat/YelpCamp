@@ -1,0 +1,35 @@
+.btn-primary {
+	background-color: silver;
+	border-color: silver;
+	color: black;
+}
+
+.btn-primary:hover {
+	background-color: rgb(74, 71, 71);
+	border-color: silver;
+	color: white;
+}
+
+.btn-success {
+	background-color: silver;
+	border-color: silver;
+	color: black;
+}
+
+.btn-success:hover {
+	background-color: rgb(74, 71, 71);
+	border-color: silver;
+	color: white;
+}
+
+.btn-info {
+	background-color: rgb(74, 71, 71);
+	border-color: silver;
+	color: white;
+}
+
+.btn-info:hover {
+	background-color: silver;
+	border-color: silver;
+	color: black;
+}
