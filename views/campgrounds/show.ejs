@@ -93,6 +93,9 @@
 		</div>
 	</div>
 	<div class="col-6">
+		<div
+			id="map"
+			class="mb-3"></div>
 		<% if(currentUser) {%>
 		<h2>Leave a Review</h2>
 		<form
@@ -203,3 +206,28 @@
 		<% } %>
 	</div>
 </div>
+
+<script>
+	const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+	const longMap = '<%= campground.geometry.coordinates[0] %>';
+	const latMap = '<%= campground.geometry.coordinates[1] %>';
+
+	mapboxgl.accessToken = mapToken;
+	const map = new mapboxgl.Map({
+		container: 'cluster-map', // container ID
+		style: 'mapbox://styles/mapbox/streets-v11', // style URL
+		center: [parseFloat(longMap), parseFloat(latMap)], // starting position [lng, lat]
+		zoom: 5, // starting zoom
+	});
+
+	map.addControl(new mapboxgl.NavigationControl());
+
+	new mapboxgl.Marker()
+		.setLngLat([parseFloat(longMap), parseFloat(latMap)])
+		.setPopup(
+			new mapboxgl.Popup({ offset: 25 }).setHTML(
+				`<h3><%= campground.title%></h3><p><%= campground.location%></p>`
+			)
+		)
+		.addTo(map);
+</script>
